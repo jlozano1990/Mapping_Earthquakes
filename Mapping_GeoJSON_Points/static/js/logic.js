@@ -39,5 +39,10 @@ let airportData = "https://raw.githubusercontent.com/jlozano1990/Mapping_Earthqu
 // Grabbing our GeoJSON data.
 d3.json(airportData).then(function(data) {
   console.log(data);
-  L.geoJson(data).addTo(map); 
+  // Creating a GeoJSON layer with the retrieved data.
+  L.geoJson(data, {
+    onEachFeature: function(features, layer){
+      layer.bindPopup("<h3>Airport Code: " + features.properties.faa + "</h3><hr><h3> Airport Name: " + features.properties.name + "</h3>") 
+    }
+  }).addTo(map); 
 });
