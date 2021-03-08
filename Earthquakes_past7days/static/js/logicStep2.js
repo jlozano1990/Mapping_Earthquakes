@@ -38,7 +38,7 @@ let earthquakeData = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/
 
 // Grabbing our GeoJSON data.
 d3.json(earthquakeData).then(function(data) {
-  
+
   // This function returns the style data for each of the earthquakes we plot on
   // the map. We pass the magnitude of the earthquake into a function
   // to calculate the radius.
@@ -48,7 +48,7 @@ d3.json(earthquakeData).then(function(data) {
       fillOpacity: 1,
       fillColor: "#ffae42",
       color: "#000000",
-      radius: getRadius(),
+      radius: getRadius(feature.properties.mag),
       stroke: true,
       weight: 0.5
     }
